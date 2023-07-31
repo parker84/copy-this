@@ -64,6 +64,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -99,6 +100,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -152,6 +154,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -209,6 +212,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -253,6 +257,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -293,6 +298,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -376,6 +382,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -438,6 +445,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -510,6 +518,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,
@@ -591,6 +600,7 @@ class CopyThis():
             "{input_copy}"
 
             Return the improved version of this sales copy with proper markdown formatting (bolding / headers / bullets / ...)
+            Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
             """,

@@ -38,16 +38,3 @@ then choose below to pay with PayPal, Amazon, Dwolla or BitPay.
 Then you can watch the show, download the show, ignore the show.
 Whatever you want. After that, you never, ever have to hear from me
 again. Unless you want to.
-
-ENTER YOUR EMAIL:
-
-Seriously – get the email address RIGHT. We need to send you
-backup login details. If you give us the wrong email address, you
-won't be able to recover your account if you get logged out.
-
-ENTER YOUR EMAIL:
-
-I'm going to be offering other things through this site. Would you
-like to hear about them?
-- [ ] Yes, I'd like to receive further emails about Louis C.K. things.
-- [ ] No, leave me alone forever, you fat idiot.

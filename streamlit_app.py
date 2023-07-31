@@ -17,8 +17,9 @@ input_copy = st.text_area(
     label_visibility="hidden",
     height=300,
 )
-
-output_copy = copythis.run(input_copy)
-
 st.caption('The better version is written here 👇🏻')
-st.markdown(output_copy)
+
+
+if input_copy != '' and input_copy != 'Your copy goes here...':
+    output_copy = copythis.run(input_copy)
+    st.markdown(output_copy)
