@@ -1,7 +1,7 @@
 # copy-this
 Repo to build a bot that makes you a better copywriter.
 
-Access the bot here: 
+Access the bot here: [copythis.streamlit.app](https://copythis.streamlit.app/)
 
 ## Want to learn how to write better copy yourself?
 Checkout the course that this bot is based off of: [CopyThat](https://copythat.com/?ref=0vifefrm)
