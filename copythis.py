@@ -2,9 +2,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from dotenv import find_dotenv, load_dotenv
 from langchain.prompts import PromptTemplate
-from decouple import config
 import os
-from tqdm import tqdm
 load_dotenv(find_dotenv())
 
 # --------------constants
