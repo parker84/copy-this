@@ -22,17 +22,29 @@ class CopyThis():
     
     def run(self, input_copy):
         self.logger.info('Running CopyThis')
-        output_copy = self.make_it_sing(input_copy)
-        output_copy = self.format_your_copy(output_copy)
-        output_copy = self.slippery_slope(output_copy)
-        output_copy = self.simplify(output_copy)
-        output_copy = self.storytelling(output_copy)
-        output_copy = self.write_like_you_speak(output_copy)
-        output_copy = self.longer_copy(output_copy)
-        output_copy = self.about_us(output_copy)
-        output_copy = self.yes_ladder(output_copy)
-        output_copy = self.emotion(output_copy)
-        return output_copy
+        make_it_sing_version = self.make_it_sing(input_copy)
+        aida_version = self.format_w_aida(make_it_sing_version)
+        slippery_slope_version = self.slippery_slope(aida_version)
+        simplify_version = self.simplify(slippery_slope_version)
+        storytelling_version = self.storytelling(simplify_version)
+        write_like_you_speak_version = self.write_like_you_speak(storytelling_version)
+        longer_copy_version = self.longer_copy(write_like_you_speak_version)
+        # output_copy = self.about_us(output_copy)
+        yes_ladder_version = self.yes_ladder(longer_copy_version)
+        emotion_version = self.emotion(yes_ladder_version)
+        output_copy, final_prompt = self.combine_copy_together(
+            original_copy=input_copy,
+            make_it_sing_version=make_it_sing_version,
+            aida_version=aida_version,
+            slippery_slope_version=slippery_slope_version,
+            simplify_version=simplify_version,
+            storytelling_version=storytelling_version,
+            write_like_you_speak_version=write_like_you_speak_version,
+            longer_copy_version=longer_copy_version,
+            yes_ladder_version=yes_ladder_version,
+            emotion_version=emotion_version
+        )
+        return output_copy, final_prompt
 
     def make_it_sing(self, input_copy):
         self.logger.info('Giving it rhythm')
@@ -74,7 +86,7 @@ class CopyThis():
         self.logger.info(f"Output Copy: \n{output_copy}")
         return output_copy
     
-    def format_your_copy(self, input_copy):
+    def format_w_aida(self, input_copy):
         self.logger.info('AIDA')
         llm = ChatOpenAI(model_name=CHAT_MODEL, temperature=0)
         prompt = PromptTemplate(
@@ -92,6 +104,7 @@ class CopyThis():
             This is the most common format for sales pages.
 
             The copy you write, should be in this format.
+            (but do not actually label it as such)
 
             Here's his letter: 
             "{example_copy}"
@@ -385,6 +398,8 @@ class CopyThis():
             Because this is markdown - output dollars signs ($) as \$.
             Be sure to blow my socks with how many sales this is going to generate.
             Only output the new copy - no commentary around it.
+            Don't include any copy that doesn't need to be there even if it is in the original version.
+            Delete any copy that doesn't need to be there.
             """,
         )
         chain = LLMChain(llm=llm, prompt=prompt)
@@ -609,3 +624,138 @@ class CopyThis():
         output_copy = chain.run({"example_copy": self.example_copy['10-emotion'], "input_copy": input_copy})
         self.logger.info(f"Output Copy: \n{output_copy}")
         return output_copy
+    
+    def combine_copy_together(
+            self, 
+            original_copy,
+            make_it_sing_version,
+            aida_version,
+            slippery_slope_version,
+            simplify_version,
+            storytelling_version,
+            write_like_you_speak_version,
+            longer_copy_version,
+            yes_ladder_version,
+            emotion_version
+        ):
+        self.logger.info('Combining')
+        llm = ChatOpenAI(model_name=CHAT_MODEL, temperature=0)
+        prompt = PromptTemplate(
+            input_variables=[
+                'original_copy',
+                'make_it_sing_version',
+                'aida_version',
+                'slippery_slope_version',
+                'simplify_version',
+                'storytelling_version',
+                'write_like_you_speak_version',
+                'longer_copy_version',
+                'yes_ladder_version',
+                'emotion_version'
+            ],
+            template="""
+            You are an expert at writing sales copy.
+
+            I'm going to give you some sales copy and you're going to drastically improve it so it actually sells.
+
+            You've previously had multiple attempts at improving this sales copy each focused on improving it in a specific way.
+
+            Now you're going to combine all these together into the best possible version.
+
+            ## Here is the original version of the sales copy:
+            {original_copy}
+
+            ## Then you took that and made it sound better with rythm:
+            {make_it_sing_version}
+
+            ## Then you took that and applied the AIDA sales principles:
+            {aida_version}
+
+            ## Then you took that and made sure the reader falls down a slippery slope when reading:
+            {slippery_slope_version}
+
+            ## Then you took that and made sure it was simple:
+            {simplify_version}
+
+            ## You made it sound like a story:
+            {storytelling_version}
+
+            ## You made sure it was written like a person would speak:
+            {write_like_you_speak_version}
+
+            ## You ensured it was just the right lenghth:
+            {longer_copy_version}
+
+            ## You implemented the "yes ladder":
+            {yes_ladder_version}
+
+            ## And you ensured to invoke the emotion of the reader:
+            {emotion_version}
+
+            Now I want you to take the best of all these and output the best sales page.
+            ever written to sell what was being sold in the original version.
+
+            Return the final version of this sales copy with proper markdown formatting (bolding / headers / bullets italica / `` for numbers, ...)
+            Because this is markdown - output dollars signs ($) as \$.
+            Be sure to blow my socks with how many sales this is going to generate.
+            Don't include any copy that doesn't need to be there even if it is in the original version.
+            Delete any copy that doesn't need to be there.
+            """,
+        )
+        final_prompt = f"""
+You are an expert at writing sales copy.
+
+I'm going to give you some sales copy and you're going to drastically improve it so it actually sells.
+
+You've previously had multiple attempts at improving this sales copy each focused on improving it in a specific way.
+
+Now you're going to combine all these together into the best possible version.
+
+## Here is the original version of the sales copy:
+{original_copy}
+
+## Then you took that and made it sound better with rythm:
+{make_it_sing_version}
+
+## Then you took that and applied the AIDA sales principles:
+{aida_version}
+
+## Then you took that and made sure the reader falls down a slippery slope when reading:
+{slippery_slope_version}
+
+## Then you took that and made sure it was simple:
+{simplify_version}
+
+## You made it sound like a story:
+{storytelling_version}
+
+## You made sure it was written like a person would speak:
+{write_like_you_speak_version}
+
+## You ensured it was just the right lenghth:
+{longer_copy_version}
+
+## You implemented the "yes ladder":
+{yes_ladder_version}
+
+## And you ensured to invoke the emotion of the reader:
+{emotion_version}
+
+Now I want you to take the best of all these and output the best sales page
+ever written to sell what was being sold in the original version.
+        """
+        chain = LLMChain(llm=llm, prompt=prompt)
+        output_copy = chain.run({
+            "original_copy": original_copy, 
+            "make_it_sing_version": make_it_sing_version,
+            "aida_version": aida_version,
+            "slippery_slope_version": slippery_slope_version,
+            "simplify_version": simplify_version,
+            "storytelling_version": storytelling_version,
+            "write_like_you_speak_version": write_like_you_speak_version,
+            "longer_copy_version": longer_copy_version,
+            "yes_ladder_version": yes_ladder_version,
+            "emotion_version": emotion_version
+        })
+        self.logger.info(f"Output Copy: \n{output_copy}")
+        return output_copy, final_prompt

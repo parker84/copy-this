@@ -21,5 +21,8 @@ st.caption('The better version is written here 👇🏻')
 
 
 if input_copy != '' and input_copy != 'Your copy goes here...':
-    output_copy = copythis.run(input_copy)
+    output_copy, final_prompt = copythis.run(input_copy)
     st.markdown(output_copy)
+
+    with st.expander("Show Final Prompt"):
+        st.markdown(final_prompt)
